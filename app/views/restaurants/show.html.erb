@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @restaurant.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @restaurant.description %>
+</p>
+<table class="table">
+	<tr>
+		<td>Name</td>
+		<td>Post</td>
+	</tr>
+	<% @posts.each do |post| %>
+	<tr>
+		<td><%= post.user.name %></td>	
+		<td><%= post.text %></td>
+		<% if current_user.id == @user.id %>
+		<td><%= link_to 'delete', post_path(post.id), method: :delete %></td>
+		<% end %>	
+	</tr>
+	<% end %><br />
+</table>
+
+<%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
+<%= link_to 'Back', restaurants_path %>
