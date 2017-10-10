@@ -1,29 +1,30 @@
 <p id="notice"><%= notice %></p>
-
+<%= image_tag @restaurant.image.url(:medium) %>
 <p>
-  <strong>Name:</strong>
-  <%= @restaurant.name %>
+  <strong>Restaurant name:</strong>
+  <h3><%= @restaurant.name %></h3>
 </p>
 
 <p>
-  <strong>Description:</strong>
-  <%= @restaurant.description %>
+  <strong>Description restaurant:</strong>
+  <h3><%= @restaurant.description %></h3> 
 </p>
-<table class="table">
-	<tr>
-		<td>Name</td>
-		<td>Post</td>
-	</tr>
-	<% @posts.each do |post| %>
-	<tr>
-		<td><%= post.user.name %></td>	
-		<td><%= post.text %></td>
-		<% if current_user.id == @user.id %>
-		<td><%= link_to 'delete', post_path(post.id), method: :delete %></td>
-		<% end %>	
-	</tr>
-	<% end %><br />
-</table>
 
-<%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
 <%= link_to 'Back', restaurants_path %>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Dish name</th>
+      <th>Description dish</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @dishes.each do |dish| %>
+      <tr>
+        <td><%= dish.name %></td>
+        <td><%= dish.description %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
